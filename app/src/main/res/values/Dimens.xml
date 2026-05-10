@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_xs">4dp</dimen>
+    <dimen name="margin_sm">8dp</dimen>
+    <dimen name="margin_md">16dp</dimen>
+    <dimen name="margin_lg">24dp</dimen>
+    <dimen name="margin_xl">32dp</dimen>
+
+    <dimen name="card_radius">16dp</dimen>
+    <dimen name="card_radius_sm">12dp</dimen>
+    <dimen name="card_radius_lg">24dp</dimen>
+
+    <dimen name="bottom_nav_height">64dp</dimen>
+    <dimen name="stat_card_min_height">110dp</dimen>
+    <dimen name="exercise_item_height">72dp</dimen>
+    <dimen name="routine_item_height">88dp</dimen>
+</resources>

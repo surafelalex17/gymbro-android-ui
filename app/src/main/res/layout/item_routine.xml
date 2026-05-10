@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ROUTINE LIST ITEM
+    File: res/layout/item_routine.xml
+    Used by: RoutineAdapter.java
+-->
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="10dp"
+    app:cardBackgroundColor="@color/bg_card"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="18dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <!-- Left: Color block indicating split type -->
+        <FrameLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="16dp">
+
+            <View
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_avatar" />
+
+            <TextView
+                android:id="@+id/tv_routine_initial"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="P"
+                android:textColor="@color/text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+        </FrameLayout>
+
+        <!-- Center: Routine info -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_routine_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Push Day"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_routine_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chest, Shoulders, Triceps"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"
+                android:layout_marginTop="3dp" />
+
+            <!-- Exercise count -->
+            <TextView
+                android:id="@+id/tv_exercise_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6 exercises"
+                android:textColor="@color/primary_light"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp" />
+
+        </LinearLayout>
+
+        <!-- Right arrow -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="›"
+            android:textColor="@color/text_muted"
+            android:textSize="28sp"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
