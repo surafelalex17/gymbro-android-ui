@@ -62,42 +62,9 @@
             android:paddingBottom="32dp">
 
             <!-- Section: Profile -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PROFILE"
-                android:textColor="@color/text_muted"
-                android:textSize="11sp"
-                android:letterSpacing="0.1"
-                android:textAllCaps="true"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/bg_card_rounded"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp">
 
-                <include layout="@layout/item_settings_row"
-                    android:id="@+id/row_profile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bg_elevated" android:layout_marginStart="16dp" />
-                <include layout="@layout/item_settings_row"
-                    android:id="@+id/row_weight_unit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bg_elevated" android:layout_marginStart="16dp" />
-                <include layout="@layout/item_settings_row"
-                    android:id="@+id/row_goal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
 
-            </LinearLayout>
 
             <!-- Section: App -->
             <TextView

@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 
 
 import com.example.gymbro.app.R;
+import com.gymbro.app.activities.MainActivity;
 import com.gymbro.app.data.repository.WorkoutRepository;
 import com.gymbro.app.models.Workout;
 import com.gymbro.app.utils.SessionManager;
@@ -56,6 +57,15 @@ public class HomeFragment extends Fragment {
         sessionManager = new SessionManager(requireContext());
         workoutRepository = new WorkoutRepository(requireContext());
 
+        TextView btnMenu = view.findViewById(R.id.btn_menu);
+        if (btnMenu != null) {
+            btnMenu.setOnClickListener(v -> {
+                if (getActivity() instanceof MainActivity) {
+                    ((MainActivity) getActivity()).openDrawer();
+                }
+            });
+        }
+
         setupHeader();
         loadWorkoutData();
 
@@ -65,7 +75,6 @@ public class HomeFragment extends Fragment {
     private void initViews(View view) {
         tvGreeting          = view.findViewById(R.id.tv_greeting);
         tvUsername          = view.findViewById(R.id.tv_username);
-        tvAvatarInitial     = view.findViewById(R.id.tv_avatar_initial);
         tvStreakCount       = view.findViewById(R.id.tv_streak_count);
         dotMon              = view.findViewById(R.id.dot_mon);
         dotTue              = view.findViewById(R.id.dot_tue);
@@ -99,9 +108,7 @@ public class HomeFragment extends Fragment {
         String firstName = sessionManager.getFirstName();
         if (firstName != null && !firstName.isEmpty()) {
             tvUsername.setText(firstName);
-            tvAvatarInitial.setText(
-                    String.valueOf(firstName.charAt(0)).toUpperCase()
-            );
+
         }
     }
 

@@ -29,23 +29,7 @@ public class SettingsActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> finish());
 
         // ── Fill Profile rows ─────────────────────────────────────────────────
-        setupRow(
-                R.id.row_profile,
-                "Profile",
-                sessionManager.getFirstName() + " " + "(tap to edit)"
-        );
 
-        setupRow(
-                R.id.row_weight_unit,
-                "Weight Unit",
-                "kg"
-        );
-
-        setupRow(
-                R.id.row_goal,
-                "Weekly Goal",
-                "3 workouts"
-        );
 
         // ── Fill App rows ─────────────────────────────────────────────────────
         setupRow(
@@ -67,17 +51,7 @@ public class SettingsActivity extends AppCompatActivity {
         );
 
         // ── Row click listeners ───────────────────────────────────────────────
-        findViewById(R.id.row_profile).setOnClickListener(v ->
-                showInfoDialog("Profile", "Profile editing coming soon!")
-        );
 
-        findViewById(R.id.row_weight_unit).setOnClickListener(v ->
-                showWeightUnitDialog()
-        );
-
-        findViewById(R.id.row_goal).setOnClickListener(v ->
-                showGoalDialog()
-        );
 
         findViewById(R.id.row_notifications).setOnClickListener(v ->
                 showInfoDialog("Notifications", "Notification settings coming soon!")
@@ -119,30 +93,7 @@ public class SettingsActivity extends AppCompatActivity {
                 .show();
     }
 
-    private void showWeightUnitDialog() {
-        String[] options = { "kg", "lbs" };
-        new AlertDialog.Builder(this)
-                .setTitle("Weight Unit")
-                .setItems(options, (dialog, which) -> {
-                    String selected = options[which];
-                    setupRow(R.id.row_weight_unit, "Weight Unit", selected);
-                })
-                .show();
-    }
 
-    private void showGoalDialog() {
-        String[] options = {
-                "2 workouts", "3 workouts", "4 workouts",
-                "5 workouts", "6 workouts", "7 workouts"
-        };
-        new AlertDialog.Builder(this)
-                .setTitle("Weekly Goal")
-                .setItems(options, (dialog, which) -> {
-                    String selected = options[which];
-                    setupRow(R.id.row_goal, "Weekly Goal", selected);
-                })
-                .show();
-    }
 
     private void showLogoutDialog() {
         new AlertDialog.Builder(this)

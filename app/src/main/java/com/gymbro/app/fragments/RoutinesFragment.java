@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
+
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,7 +43,7 @@ public class RoutinesFragment extends Fragment {
     private LinearLayout emptyState;
     private TextView tvUserName;
     private ExtendedFloatingActionButton fabAdd;
-    private ImageButton btnSettings;
+
 
     private RoutineAdapter adapter;
     private SessionManager sessionManager;
@@ -58,7 +58,7 @@ public class RoutinesFragment extends Fragment {
         emptyState   = view.findViewById(R.id.empty_routines);
         tvUserName   = view.findViewById(R.id.tv_user_name);
         fabAdd       = view.findViewById(R.id.fab_add_routine);
-        btnSettings  = view.findViewById(R.id.btn_settings);
+
 
         sessionManager = new SessionManager(requireContext());
 
@@ -92,9 +92,7 @@ public class RoutinesFragment extends Fragment {
         fabAdd.setOnClickListener(v -> showAddRoutineDialog());
 
         // Settings
-        btnSettings.setOnClickListener(v -> {
-            startActivity(new Intent(requireContext(), SettingsActivity.class));
-        });
+
 
         return view;
     }

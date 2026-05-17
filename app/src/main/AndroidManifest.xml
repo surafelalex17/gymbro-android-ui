@@ -13,27 +13,40 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GymbroMAD">
+
+        <!-- Splash is the true launcher -->
         <activity
-            android:name="com.gymbro.app.activities.LoginActivity"
-
-
+            android:name="com.gymbro.app.activities.SplashActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name="com.gymbro.app.activities.SettingsActivity" />
+            android:name="com.gymbro.app.activities.LoginActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.gymbro.app.activities.RegisterActivity" />
 
         <activity
             android:name="com.gymbro.app.activities.MainActivity"
             android:exported="false" />
-        <activity android:name="com.gymbro.app.activities.RegisterActivity" />
-        <activity android:name="com.gymbro.app.activities.WorkoutSessionActivity" />
-        <activity android:name="com.gymbro.app.activities.ExercisePickerActivity" />
-        <activity android:name="com.gymbro.app.activities.RoutineDetailActivity" />
+
+        <activity
+            android:name="com.gymbro.app.activities.SettingsActivity" />
+
+        <activity
+            android:name="com.gymbro.app.activities.WorkoutSessionActivity" />
+
+        <activity
+            android:name="com.gymbro.app.activities.ExercisePickerActivity" />
+
+        <activity
+            android:name="com.gymbro.app.activities.RoutineDetailActivity" />
+
     </application>
 
 </manifest>
