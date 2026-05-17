@@ -1,38 +1,57 @@
 package com.gymbro.app.models;
 
+import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Model representing a completed or in-progress workout session.
- * Ready for Node.js backend integration.
- */
 public class Workout {
 
+    // ── Backend fields (from API) ─────────────────────────────────────────────
+    @SerializedName("id")
     private String id;
-    private String name;
-    private String date;            // ISO format for backend: "2024-01-15"
-    private long durationSeconds;   // Total workout duration
-    private List<WorkoutExercise> exercises;
+
+    @SerializedName("userId")
+    private String userId;
+
+    @SerializedName("title")
+    private String title;
+
+    @SerializedName("description")
+    private String description;
+
+    @SerializedName("type")
+    private String type;
+
+    @SerializedName("duration")
+    private int duration; // in minutes
+
+    @SerializedName("caloriesBurned")
+    private Integer caloriesBurned;
+
+    @SerializedName("notes")
     private String notes;
-    private int totalVolume;        // Total kg lifted (kg x reps summed)
+
+    @SerializedName("completedAt")
+    private String completedAt;
+
+    @SerializedName("createdAt")
+    private String createdAt;
+
+    // ── Local-only fields (for active workout tracking) ───────────────────────
+    private long durationSeconds;
+    private List<WorkoutExercise> exercises;
+    private int totalVolume;
     private boolean isCompleted;
 
+    // ── Constructors ──────────────────────────────────────────────────────────
     public Workout() {
         this.exercises = new ArrayList<>();
     }
 
-    public Workout(String id, String name, String date) {
-        this.id = id;
-        this.name = name;
-        this.date = date;
-        this.exercises = new ArrayList<>();
-        this.isCompleted = false;
-    }
-
-    /** Calculate total volume (weight × reps across all sets) */
+    // ── Business logic ────────────────────────────────────────────────────────
     public int calculateTotalVolume() {
         int volume = 0;
+        if (exercises == null) return 0;
         for (WorkoutExercise we : exercises) {
             for (WorkoutSet set : we.getSets()) {
                 if (set.isCompleted()) {
@@ -43,38 +62,44 @@ public class Workout {
         return volume;
     }
 
-    /** Get count of total sets completed */
     public int getTotalSetsCompleted() {
         int count = 0;
+        if (exercises == null) return 0;
         for (WorkoutExercise we : exercises) {
             count += we.getCompletedSetsCount();
         }
         return count;
     }
 
-    // --- Getters and Setters ---
-
+    // ── Getters ───────────────────────────────────────────────────────────────
     public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public String getDate() { return date; }
-    public void setDate(String date) { this.date = date; }
-
-    public long getDurationSeconds() { return durationSeconds; }
-    public void setDurationSeconds(long durationSeconds) { this.durationSeconds = durationSeconds; }
-
-    public List<WorkoutExercise> getExercises() { return exercises; }
-    public void setExercises(List<WorkoutExercise> exercises) { this.exercises = exercises; }
-
+    public String getUserId() { return userId; }
+    public String getTitle() { return title; }
+    public String getDescription() { return description; }
+    public String getType() { return type; }
+    public int getDuration() { return duration; }
+    public Integer getCaloriesBurned() { return caloriesBurned; }
     public String getNotes() { return notes; }
-    public void setNotes(String notes) { this.notes = notes; }
-
+    public String getCompletedAt() { return completedAt; }
+    public String getCreatedAt() { return createdAt; }
+    public long getDurationSeconds() { return durationSeconds; }
+    public List<WorkoutExercise> getExercises() { return exercises; }
     public int getTotalVolume() { return totalVolume; }
-    public void setTotalVolume(int totalVolume) { this.totalVolume = totalVolume; }
-
     public boolean isCompleted() { return isCompleted; }
-    public void setCompleted(boolean completed) { isCompleted = completed; }
+
+    // ── Setters ───────────────────────────────────────────────────────────────
+    public void setId(String id) { this.id = id; }
+    public void setUserId(String userId) { this.userId = userId; }
+    public void setTitle(String title) { this.title = title; }
+    public void setDescription(String description) { this.description = description; }
+    public void setType(String type) { this.type = type; }
+    public void setDuration(int duration) { this.duration = duration; }
+    public void setCaloriesBurned(Integer caloriesBurned) { this.caloriesBurned = caloriesBurned; }
+    public void setNotes(String notes) { this.notes = notes; }
+    public void setCompletedAt(String completedAt) { this.completedAt = completedAt; }
+    public void setCreatedAt(String createdAt) { this.createdAt = createdAt; }
+    public void setDurationSeconds(long durationSeconds) { this.durationSeconds = durationSeconds; }
+    public void setExercises(List<WorkoutExercise> exercises) { this.exercises = exercises; }
+    public void setTotalVolume(int totalVolume) { this.totalVolume = totalVolume; }
+    public void setCompleted(boolean completed) { this.isCompleted = completed; }
 }

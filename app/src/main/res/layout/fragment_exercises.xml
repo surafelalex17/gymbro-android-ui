@@ -62,7 +62,7 @@
             android:layout_marginEnd="10dp" />
 
         <EditText
-            android:id="@+id/et_search"
+            android:id="@+id/ex_search"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

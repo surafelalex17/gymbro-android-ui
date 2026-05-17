@@ -21,9 +21,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:padding="18dp"
-        android:clickable="true"
-        android:focusable="true">
+        android:padding="18dp">
 
         <!-- Left: Color block indicating split type -->
         <FrameLayout

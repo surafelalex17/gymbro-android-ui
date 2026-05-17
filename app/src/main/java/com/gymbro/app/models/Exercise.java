@@ -1,72 +1,41 @@
 package com.gymbro.app.models;
 
-/**
- * Model class representing a single exercise.
- * Structured to support future backend (Node.js) integration.
- */
-public class Exercise {
+import com.google.gson.annotations.SerializedName;
+import java.util.List;
+import java.io.Serializable;
 
-    // Fields map to future API response fields
+public class Exercise implements Serializable {
+
+    @SerializedName("id")
     private String id;
+
+    @SerializedName("name")
     private String name;
-    private String muscleGroup;
-    private String secondaryMuscles;
+
+    @SerializedName("category")
+    private String category;
+
+    @SerializedName("muscleGroups")
+    private List<String> muscleGroups;
+
+    @SerializedName("equipment")
     private String equipment;
-    private String difficulty;      // Beginner, Intermediate, Advanced
-    private String instructions;
-    private String category;        // Strength, Cardio, Stretching, etc.
-    private int imageResId;         // Local drawable resource (frontend only)
 
-    // Default constructor (needed for future JSON deserialization)
-    public Exercise() {}
+    @SerializedName("description")
+    private String description;
 
-    // Full constructor
-    public Exercise(String id, String name, String muscleGroup, String secondaryMuscles,
-                    String equipment, String difficulty, String instructions, String category) {
-        this.id = id;
-        this.name = name;
-        this.muscleGroup = muscleGroup;
-        this.secondaryMuscles = secondaryMuscles;
-        this.equipment = equipment;
-        this.difficulty = difficulty;
-        this.instructions = instructions;
-        this.category = category;
-    }
-
-    // --- Getters and Setters ---
-
+    // Getters
     public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
-
     public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public String getMuscleGroup() { return muscleGroup; }
-    public void setMuscleGroup(String muscleGroup) { this.muscleGroup = muscleGroup; }
-
-    public String getSecondaryMuscles() { return secondaryMuscles; }
-    public void setSecondaryMuscles(String secondaryMuscles) { this.secondaryMuscles = secondaryMuscles; }
-
-    public String getEquipment() { return equipment; }
-    public void setEquipment(String equipment) { this.equipment = equipment; }
-
-    public String getDifficulty() { return difficulty; }
-    public void setDifficulty(String difficulty) { this.difficulty = difficulty; }
-
-    public String getInstructions() { return instructions; }
-    public void setInstructions(String instructions) { this.instructions = instructions; }
-
     public String getCategory() { return category; }
+    public List<String> getMuscleGroups() { return muscleGroups; }
+    public String getEquipment() { return equipment; }
+    public String getDescription() { return description; }
+    // Add these setters to your existing Exercise.java
+    public void setId(String id) { this.id = id; }
+    public void setName(String name) { this.name = name; }
     public void setCategory(String category) { this.category = category; }
-
-    public int getImageResId() { return imageResId; }
-    public void setImageResId(int imageResId) { this.imageResId = imageResId; }
-
-    /**
-     * Returns a short display label for difficulty with color hint.
-     */
-    public String getDifficultyLabel() {
-        if (difficulty == null) return "Beginner";
-        return difficulty;
-    }
+    public void setMuscleGroups(List<String> muscleGroups) { this.muscleGroups = muscleGroups; }
+    public void setEquipment(String equipment) { this.equipment = equipment; }
+    public void setDescription(String description) { this.description = description; }
 }

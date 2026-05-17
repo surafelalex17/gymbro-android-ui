@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <!-- Top Bar -->
+    <LinearLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="52dp"
+        android:paddingBottom="16dp"
+        android:background="@color/bg_dark">
+
+        <!-- Cancel -->
+
+        <TextView
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:textColor="#EF4444"
+            android:textSize="15sp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp" />
+
+        <!-- Routine Name -->
+        <TextView
+            android:id="@+id/tv_routine_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Push Day"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+
+        <TextView
+            android:id="@+id/btn_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Finish"
+            android:textColor="@color/primary_light"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Exercise List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_session_exercises"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:clipToPadding="false"
+        android:paddingBottom="100dp"
+        android:layout_marginTop="120dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <!-- Finish Button -->
+    <Button
+        android:id="@+id/btn_finish_workout"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="💾  Finish Workout"
+        android:textColor="@color/text_primary"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:background="@drawable/bg_primary_button"
+        android:stateListAnimator="@null"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
