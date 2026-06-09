@@ -1,23 +1,19 @@
 package com.gymbro.app.models;
 
-/**
- * Holds user profile and progress statistics.
- * Mock data for frontend; will come from backend later.
- */
+
 public class UserStats {
 
     private String userId;
     private String displayName;
     private int totalWorkouts;
-    private int currentStreak;      // consecutive days
+    private int currentStreak;
     private int longestStreak;
-    private float totalVolumeLifted; // in kg
+    private float totalVolumeLifted;
     private int totalExercisesLogged;
-    private String memberSince;     // e.g. "Jan 2024"
-    private float bodyWeight;       // kg
-    private String fitnessGoal;     // e.g. "Build Muscle", "Lose Weight"
+    private String memberSince;
+    private float bodyWeight;
+    private String fitnessGoal;
 
-    // --- Personal Records (mock) ---
     private float benchPressMax;
     private float squatMax;
     private float deadliftMax;
@@ -25,7 +21,6 @@ public class UserStats {
 
     public UserStats() {}
 
-    // Static factory for mock data
     public static UserStats getMockStats() {
         UserStats stats = new UserStats();
         stats.userId = "user_001";
@@ -45,7 +40,6 @@ public class UserStats {
         return stats;
     }
 
-    // --- Getters and Setters ---
 
     public String getUserId() { return userId; }
     public void setUserId(String userId) { this.userId = userId; }

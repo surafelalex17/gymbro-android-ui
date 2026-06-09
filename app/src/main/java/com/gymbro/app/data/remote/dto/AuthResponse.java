@@ -3,7 +3,6 @@ package com.gymbro.app.data.remote.dto;
 import com.google.gson.annotations.SerializedName;
 import com.gymbro.app.models.User;
 
-// Maps to the "data" field inside your API response
 public class AuthResponse {
 
     @SerializedName("user")

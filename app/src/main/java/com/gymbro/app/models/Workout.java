@@ -6,7 +6,6 @@ import java.util.List;
 
 public class Workout {
 
-    // ── Backend fields (from API) ─────────────────────────────────────────────
     @SerializedName("id")
     private String id;
 
@@ -37,18 +36,15 @@ public class Workout {
     @SerializedName("createdAt")
     private String createdAt;
 
-    // ── Local-only fields (for active workout tracking) ───────────────────────
     private long durationSeconds;
     private List<WorkoutExercise> exercises;
     private int totalVolume;
     private boolean isCompleted;
 
-    // ── Constructors ──────────────────────────────────────────────────────────
     public Workout() {
         this.exercises = new ArrayList<>();
     }
 
-    // ── Business logic ────────────────────────────────────────────────────────
     public int calculateTotalVolume() {
         int volume = 0;
         if (exercises == null) return 0;

@@ -10,7 +10,6 @@
     android:layout_marginBottom="12dp"
     android:padding="16dp">
 
-    <!-- Exercise Name -->
     <TextView
         android:id="@+id/tv_exercise_name"
         android:layout_width="wrap_content"
@@ -20,7 +19,6 @@
         android:textStyle="bold"
         android:layout_marginBottom="4dp" />
 
-    <!-- Category -->
     <TextView
         android:id="@+id/tv_exercise_category"
         android:layout_width="wrap_content"
@@ -30,7 +28,6 @@
         android:textAllCaps="true"
         android:layout_marginBottom="12dp" />
 
-    <!-- Sets Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -76,14 +73,12 @@
 
     </LinearLayout>
 
-    <!-- Sets Container (filled programmatically) -->
     <LinearLayout
         android:id="@+id/sets_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" />
 
-    <!-- Add Set Button -->
     <TextView
         android:id="@+id/btn_add_set"
         android:layout_width="match_parent"

@@ -19,7 +19,6 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
 
     private List<Exercise> exercises = new ArrayList<>();
 
-    // Called when user clicks an exercise
     public interface OnExerciseClickListener {
         void onExerciseClick(Exercise exercise);
     }
@@ -45,19 +44,17 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
         holder.tvName.setText(exercise.getName());
         holder.tvCategory.setText(exercise.getCategory());
 
-        // Join muscle groups with comma
         if (exercise.getMuscleGroups() != null && !exercise.getMuscleGroups().isEmpty()) {
             holder.tvMuscles.setText(String.join(" · ", exercise.getMuscleGroups()));
         }
 
-        // Equipment
+
         if (exercise.getEquipment() != null) {
             holder.tvEquipment.setText("🏋 " + exercise.getEquipment());
         } else {
             holder.tvEquipment.setText("🏋 bodyweight");
         }
 
-        // Click listener
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) listener.onExerciseClick(exercise);
         });
@@ -74,7 +71,6 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
         notifyDataSetChanged();
     }
 
-    // Call this to filter locally
     public void filter(String query, List<Exercise> allExercises) {
         if (query.isEmpty()) {
             setExercises(allExercises);

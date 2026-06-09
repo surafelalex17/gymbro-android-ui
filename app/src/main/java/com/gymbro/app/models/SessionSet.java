@@ -1,6 +1,5 @@
 package com.gymbro.app.models;
 
-// Represents one set during an active workout session
 public class SessionSet {
 
     private float weight;

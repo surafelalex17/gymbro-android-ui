@@ -32,7 +32,6 @@ public class LoginActivity extends AppCompatActivity {
 
         sessionManager = new SessionManager(this);
 
-        // If already logged in skip to main
         if (sessionManager.isLoggedIn()) {
             goToMain();
             return;
@@ -80,19 +79,24 @@ public class LoginActivity extends AppCompatActivity {
                                     data.getToken(),
                                     data.getUser().getId(),
                                     data.getUser().getEmail(),
-                                    data.getUser().getFirstName()
-                            );
-
-                            Toast.makeText(LoginActivity.this,
-                                    "Welcome back, " + data.getUser().getFirstName() + "!",
-                                    Toast.LENGTH_SHORT).show();
-
+                                    data.getUser().getFirstName(),
+                                    data.getUser().getStatus());
                             goToMain();
-
                         } else {
                             Toast.makeText(LoginActivity.this,
                                     "Invalid email or password",
                                     Toast.LENGTH_SHORT).show();
+
+                            try {
+                                String errorBody = response.errorBody().string();
+                                org.json.JSONObject json = new org.json.JSONObject(errorBody);
+                                String message = json.getString("message");
+                                Toast.makeText(LoginActivity.this, message,
+                                        Toast.LENGTH_LONG).show();
+                            } catch (Exception e) {
+                                Toast.makeText(LoginActivity.this,
+                                        "Login failed", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
 

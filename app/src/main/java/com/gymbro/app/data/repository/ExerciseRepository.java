@@ -28,7 +28,6 @@ public class ExerciseRepository {
     private final ExecutorService executor;
     private final Handler mainHandler;
 
-    // Callback interface for the fragment to receive data
     public interface ExerciseCallback {
         void onSuccess(List<Exercise> exercises);
         void onError(String message);
@@ -41,24 +40,19 @@ public class ExerciseRepository {
         this.mainHandler = new Handler(Looper.getMainLooper());
     }
 
-    // Main method — load from Room first, then refresh from API
     public void getExercises(ExerciseCallback callback) {
         executor.execute(() -> {
-            // Step 1 — Load from Room instantly
             List<ExerciseEntity> cached = exerciseDao.getAll();
 
             if (!cached.isEmpty()) {
-                // Return cached data immediately
                 List<Exercise> exercises = toModelList(cached);
                 mainHandler.post(() -> callback.onSuccess(exercises));
             }
 
-            // Step 2 — Refresh from API in background
             fetchFromApi(callback, cached.isEmpty());
         });
     }
 
-    // Search locally in Room (fast, no API needed)
     public void searchExercises(String query, ExerciseCallback callback) {
         executor.execute(() -> {
             List<ExerciseEntity> results = exerciseDao.search(query);
@@ -67,7 +61,6 @@ public class ExerciseRepository {
         });
     }
 
-    // Filter by category locally
     public void filterByCategory(String category, ExerciseCallback callback) {
         executor.execute(() -> {
             List<ExerciseEntity> results = category.equals("all")
@@ -78,7 +71,6 @@ public class ExerciseRepository {
         });
     }
 
-    // Get categories from Room
     public void getCategories(ExerciseCallback callback) {
         executor.execute(() -> {
             List<String> categories = exerciseDao.getCategories();
@@ -101,13 +93,11 @@ public class ExerciseRepository {
                         if (response.isSuccessful() && response.body() != null) {
                             List<Exercise> exercises = response.body().getData();
 
-                            // Save to Room on background thread
                             executor.execute(() -> {
                                 exerciseDao.deleteAll();
                                 exerciseDao.insertAll(toEntityList(exercises));
                             });
 
-                            // If Room was empty, deliver API data now
                             if (isFirstLoad) {
                                 mainHandler.post(() -> callback.onSuccess(exercises));
                             }
@@ -146,7 +136,6 @@ public class ExerciseRepository {
         return ex;
     }
 
-    // Convert Model → Entity
     private List<ExerciseEntity> toEntityList(List<Exercise> models) {
         List<ExerciseEntity> list = new ArrayList<>();
         for (Exercise e : models) {

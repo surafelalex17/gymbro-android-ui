@@ -63,11 +63,9 @@ public class WorkoutSessionActivity extends AppCompatActivity {
 
         if (routine != null) {
             tvRoutineName.setText(routine.getName());
-            // Always load fresh routine from API to get exercises
             loadRoutineWithExercises();
         }
 
-        // Cancel — set on the whole top bar cancel area
         View topBar = findViewById(R.id.top_bar);
         TextView btnCancel = topBar.findViewById(R.id.btn_cancel);
         btnCancel.setOnClickListener(v -> showCancelDialog());
@@ -76,7 +74,6 @@ public class WorkoutSessionActivity extends AppCompatActivity {
 
     }
 
-    // ── Build exercise list ───────────────────────────────────────────────────
 
     private void buildSessionExercises() {
         sessionExercises.clear();
@@ -91,8 +88,6 @@ public class WorkoutSessionActivity extends AppCompatActivity {
                             ex.getName(),
                             ex.getCategory()
                     );
-                    // Use the sets count from routine exercise
-                    // Clear default 3 sets and add correct number
                     sessionEx.clearSets();
                     for (int i = 0; i < re.getSets(); i++) {
                         sessionEx.addSet();
@@ -132,7 +127,6 @@ public class WorkoutSessionActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100) {
-            // Exercises were added — reload routine from API
             loadRoutineWithExercises();
         }
     }
@@ -165,7 +159,6 @@ public class WorkoutSessionActivity extends AppCompatActivity {
                 });
     }
 
-    // ── Finish Workout ────────────────────────────────────────────────────────
 
     private void finishWorkout() {
         // Check at least one set is done
@@ -238,7 +231,6 @@ public class WorkoutSessionActivity extends AppCompatActivity {
                 });
     }
 
-    // ── Cancel ────────────────────────────────────────────────────────────────
 
     private void showCancelDialog() {
         new AlertDialog.Builder(this)

@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Header -->
         <LinearLayout
             android:id="@+id/top_bar"
             android:layout_width="0dp"
@@ -43,7 +42,6 @@
 
         </LinearLayout>
 
-        <!-- Routines RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_routines"
             android:layout_width="0dp"
@@ -57,7 +55,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Empty State -->
         <LinearLayout
             android:id="@+id/empty_routines"
             android:layout_width="wrap_content"
@@ -97,7 +94,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- FAB -->
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fab_add_routine"
         android:layout_width="wrap_content"

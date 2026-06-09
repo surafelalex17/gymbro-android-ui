@@ -8,11 +8,12 @@
         android:usesCleartextTraffic="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcherlogo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.GymbroMAD">
+        android:theme="@style/Theme.GymbroMAD"
+        >
 
         <!-- Splash is the true launcher -->
         <activity
@@ -47,6 +48,8 @@
         <activity
             android:name="com.gymbro.app.activities.RoutineDetailActivity" />
 
+
     </application>
+
 
 </manifest>

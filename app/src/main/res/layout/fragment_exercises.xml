@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/bg_dark">
 
-    <!-- Header -->
     <TextView
         android:id="@+id/tv_exercises_title"
         android:layout_width="wrap_content"
@@ -32,7 +31,6 @@
         app:layout_constraintTop_toBottomOf="@id/tv_exercises_title"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Search Bar -->
     <androidx.cardview.widget.CardView
         android:id="@+id/search_container"
         android:layout_width="0dp"
@@ -80,7 +78,6 @@
 
     </androidx.cardview.widget.CardView>
 
-    <!-- Filter Chips -->
     <HorizontalScrollView
         android:id="@+id/filter_scroll"
         android:layout_width="0dp"
@@ -103,7 +100,6 @@
 
     </HorizontalScrollView>
 
-    <!-- Exercise List -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_exercises"
         android:layout_width="0dp"
@@ -117,7 +113,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Empty State -->
     <LinearLayout
         android:id="@+id/empty_state"
         android:layout_width="wrap_content"

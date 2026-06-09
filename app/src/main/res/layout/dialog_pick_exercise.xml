@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    EXERCISE PICKER BOTTOM SHEET
-    File: res/layout/dialog_pick_exercise.xml
-    Used by: ExercisePickerDialog.java (BottomSheetDialogFragment)
--->
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -11,7 +7,6 @@
     android:orientation="vertical"
     android:background="@color/bg_card">
 
-    <!-- Handle -->
     <View
         android:layout_width="40dp"
         android:layout_height="4dp"
@@ -20,7 +15,6 @@
         android:layout_marginTop="12dp"
         android:layout_marginBottom="16dp" />
 
-    <!-- Title -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,7 +25,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginBottom="12dp" />
 
-    <!-- Search -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="46dp"
@@ -65,7 +58,6 @@
 
     </LinearLayout>
 
-    <!-- Exercise list -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_picker_exercises"
         android:layout_width="match_parent"

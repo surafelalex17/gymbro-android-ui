@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/bg_dark">
 
-    <!-- Top Bar -->
     <LinearLayout
         android:id="@+id/top_bar"
         android:layout_width="0dp"
@@ -43,7 +42,6 @@
 
     </LinearLayout>
 
-    <!-- Search Bar -->
     <LinearLayout
         android:id="@+id/search_container"
         android:layout_width="0dp"
@@ -74,7 +72,6 @@
 
     </LinearLayout>
 
-    <!-- Exercise List -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_exercises"
         android:layout_width="0dp"

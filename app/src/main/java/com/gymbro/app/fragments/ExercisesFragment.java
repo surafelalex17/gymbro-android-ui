@@ -67,6 +67,8 @@ public class ExercisesFragment extends Fragment {
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setItemViewCacheSize(20);
 
         // Load all exercises from API
         loadExercises();

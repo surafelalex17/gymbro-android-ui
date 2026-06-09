@@ -28,6 +28,7 @@ import com.gymbro.app.adapters.RoutineAdapter;
 import com.gymbro.app.data.remote.RetrofitClient;
 import com.gymbro.app.data.remote.dto.ApiResponse;
 import com.gymbro.app.data.remote.dto.RoutineRequest;
+import com.gymbro.app.data.repository.RoutineRepository;
 import com.gymbro.app.models.Routine;
 import com.gymbro.app.utils.SessionManager;
 
@@ -48,6 +49,9 @@ public class RoutinesFragment extends Fragment {
     private RoutineAdapter adapter;
     private SessionManager sessionManager;
 
+    private RoutineRepository routineRepository;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,6 +65,8 @@ public class RoutinesFragment extends Fragment {
 
 
         sessionManager = new SessionManager(requireContext());
+        routineRepository = new RoutineRepository(requireContext());
+
 
         // Set user name
         String name = sessionManager.getFirstName();
@@ -84,6 +90,8 @@ public class RoutinesFragment extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setItemViewCacheSize(20);
 
         // Load routines
         loadRoutines();
@@ -100,28 +108,21 @@ public class RoutinesFragment extends Fragment {
     // ── Load Routines ─────────────────────────────────────────────────────────
 
     private void loadRoutines() {
-        String token = "Bearer " + sessionManager.getToken();
-
-        RetrofitClient.getInstance(requireContext())
-                .getApiService()
-                .getRoutines(token)
-                .enqueue(new Callback<ApiResponse<List<Routine>>>() {
-
+        routineRepository.getRoutines(
+                new RoutineRepository.RoutineCallback() {
                     @Override
-                    public void onResponse(Call<ApiResponse<List<Routine>>> call,
-                                           Response<ApiResponse<List<Routine>>> response) {
-                        if (response.isSuccessful() && response.body() != null) {
-                            List<Routine> routines = response.body().getData();
+                    public void onSuccess(List<Routine> routines) {
+                        if (getActivity() == null) return;
+                        requireActivity().runOnUiThread(() -> {
                             adapter.setRoutines(routines);
                             showEmptyState(routines.isEmpty());
-                        }
+                        });
                     }
-
                     @Override
-                    public void onFailure(Call<ApiResponse<List<Routine>>> call,
-                                          Throwable t) {
+                    public void onError(String message) {
                         Toast.makeText(getContext(),
-                                "Could not load routines", Toast.LENGTH_SHORT).show();
+                                "Could not load routines",
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
     }

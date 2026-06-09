@@ -18,7 +18,6 @@
         android:gravity="center_vertical"
         android:padding="16dp">
 
-        <!-- Left color accent -->
         <View
             android:id="@+id/accent_bar"
             android:layout_width="4dp"
@@ -26,7 +25,6 @@
             android:background="@color/primary_light"
             android:layout_marginEnd="14dp" />
 
-        <!-- Exercise Info -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -59,7 +57,6 @@
 
         </LinearLayout>
 
-        <!-- Category Badge -->
         <TextView
             android:id="@+id/tv_category"
             android:layout_width="wrap_content"

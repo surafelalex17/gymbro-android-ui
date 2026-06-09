@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
             tvEmail.setText(email);
         }
 
-        // Profile
+
         drawerView.findViewById(R.id.drawer_profile).setOnClickListener(v -> {
             drawerLayout.closeDrawers();
             // TODO: open ProfileActivity when built
@@ -116,13 +116,11 @@ public class MainActivity extends AppCompatActivity {
                     "Profile coming soon!", android.widget.Toast.LENGTH_SHORT).show();
         });
 
-        // Settings
         drawerView.findViewById(R.id.drawer_settings).setOnClickListener(v -> {
             drawerLayout.closeDrawers();
             startActivity(new Intent(this, SettingsActivity.class));
         });
 
-        // Logout
         drawerView.findViewById(R.id.drawer_logout).setOnClickListener(v -> {
             drawerLayout.closeDrawers();
             showLogoutDialog();
@@ -145,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    // Call this from any fragment to open the drawer
     public void openDrawer() {
         drawerLayout.openDrawer(androidx.core.view.GravityCompat.START);
     }

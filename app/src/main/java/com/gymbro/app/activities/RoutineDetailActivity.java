@@ -49,7 +49,6 @@ public class RoutineDetailActivity extends AppCompatActivity {
         sessionManager = new SessionManager(this);
         routine = (Routine) getIntent().getSerializableExtra(EXTRA_ROUTINE);
 
-        // Wire views
         tvName         = findViewById(R.id.tv_routine_name);
         tvDesc         = findViewById(R.id.tv_routine_desc);
         btnBack        = findViewById(R.id.btn_back);
@@ -58,19 +57,16 @@ public class RoutineDetailActivity extends AppCompatActivity {
         recyclerView   = findViewById(R.id.rv_routine_exercises);
         emptyState     = findViewById(R.id.empty_exercises);
 
-        // Set routine info
         if (routine != null) {
             tvName.setText(routine.getName());
             tvDesc.setText(routine.getDescription() != null
                     ? routine.getDescription() : "");
         }
 
-        // Setup adapter
         adapter = new RoutineExerciseAdapter(re -> showRemoveDialog(re));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        // Load fresh routine from API
         loadRoutine();
 
         btnBack.setOnClickListener(v -> finish());
@@ -174,7 +170,6 @@ public class RoutineDetailActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100) {
-            // Exercise was added — reload
             loadRoutine();
         }
     }

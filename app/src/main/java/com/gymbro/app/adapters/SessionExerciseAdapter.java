@@ -47,10 +47,8 @@ public class SessionExerciseAdapter extends
         holder.tvName.setText(exercise.getExerciseName());
         holder.tvCategory.setText(exercise.getExerciseCategory());
 
-        // Build set rows
         buildSetRows(holder.setsContainer, exercise, position);
 
-        // Add Set button
         holder.btnAddSet.setOnClickListener(v -> {
             exercise.addSet();
             buildSetRows(holder.setsContainer, exercise, position);
@@ -76,16 +74,13 @@ public class SessionExerciseAdapter extends
 
             tvSetNum.setText(String.valueOf(i + 1));
 
-            // Pre-fill if values exist
             if (set.getWeight() > 0)
                 etWeight.setText(String.valueOf(set.getWeight()));
             if (set.getReps() > 0)
                 etReps.setText(String.valueOf(set.getReps()));
 
-            // Update done state visually
             updateDoneState(btnDone, etWeight, etReps, set.isDone());
 
-            // Watch weight input
             etWeight.addTextChangedListener(new TextWatcher() {
                 @Override public void beforeTextChanged(CharSequence s, int st, int c, int a) {}
                 @Override public void afterTextChanged(Editable s) {}
@@ -99,7 +94,6 @@ public class SessionExerciseAdapter extends
                 }
             });
 
-            // Watch reps input
             etReps.addTextChangedListener(new TextWatcher() {
                 @Override public void beforeTextChanged(CharSequence s, int st, int c, int a) {}
                 @Override public void afterTextChanged(Editable s) {}
@@ -113,7 +107,6 @@ public class SessionExerciseAdapter extends
                 }
             });
 
-            // Done toggle
             btnDone.setOnClickListener(v -> {
                 set.setDone(!set.isDone());
                 updateDoneState(btnDone, etWeight, etReps, set.isDone());

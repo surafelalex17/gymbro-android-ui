@@ -42,7 +42,6 @@ public class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Routine routine = routines.get(position);
 
-        // First letter as initial
         if (routine.getName() != null && !routine.getName().isEmpty()) {
             holder.tvInitial.setText(
                     String.valueOf(routine.getName().charAt(0)).toUpperCase()
@@ -51,7 +50,6 @@ public class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.ViewHold
 
         holder.tvName.setText(routine.getName());
 
-        // Description
         if (routine.getDescription() != null && !routine.getDescription().isEmpty()) {
             holder.tvDesc.setText(routine.getDescription());
         } else if (routine.getSplit() != null) {
@@ -60,16 +58,13 @@ public class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.ViewHold
             holder.tvDesc.setText("No description");
         }
 
-        // Exercise count
         int count = routine.getExerciseCount();
         holder.tvExerciseCount.setText(count + " exercise" + (count == 1 ? "" : "s"));
 
-        // Click
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) listener.onRoutineClick(routine);
         });
 
-        // Long press to delete
         holder.itemView.setOnLongClickListener(v -> {
             if (listener != null) listener.onRoutineLongClick(routine);
             return true;

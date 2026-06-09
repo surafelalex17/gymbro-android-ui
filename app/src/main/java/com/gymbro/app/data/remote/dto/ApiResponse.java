@@ -2,8 +2,7 @@ package com.gymbro.app.data.remote.dto;
 
 import com.google.gson.annotations.SerializedName;
 
-// This wraps every response from your API:
-// { statusCode, data, message, success }
+
 public class ApiResponse<T> {
 
     @SerializedName("statusCode")

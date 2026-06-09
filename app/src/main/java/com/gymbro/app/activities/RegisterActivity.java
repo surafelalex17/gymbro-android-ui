@@ -50,7 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(v -> registerUser());
 
         tvLogin.setOnClickListener(v -> {
-            finish(); // goes back to LoginActivity
+            finish();
         });
 
         btnBack.setOnClickListener(v -> finish());
@@ -85,7 +85,6 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        // ── API Call ──────────────────────────────────────────────────────────
         hideError();
         btnRegister.setEnabled(false);
         btnRegister.setText("Creating account...");
@@ -109,18 +108,18 @@ public class RegisterActivity extends AppCompatActivity {
                             AuthResponse data = response.body().getData();
 
                             // Save session
-                            sessionManager.saveSession(
-                                    data.getToken(),
-                                    data.getUser().getId(),
-                                    data.getUser().getEmail(),
-                                    data.getUser().getFirstName()
-                            );
+//                            sessionManager.saveSession(
+//                                    data.getToken(),
+//                                    data.getUser().getId(),
+//                                    data.getUser().getEmail(),
+//                                    data.getUser().getFirstName()
+//                            );
 
                             Toast.makeText(RegisterActivity.this,
-                                    "Welcome, " + data.getUser().getFirstName() + "!",
+                                    "Wait for Approval, " + data.getUser().getFirstName() + "!",
                                     Toast.LENGTH_SHORT).show();
 
-                            goToMain();
+                            //goToMain();
 
                         } else {
                             // Show server error message

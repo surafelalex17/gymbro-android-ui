@@ -24,14 +24,11 @@ public class SettingsActivity extends AppCompatActivity {
 
         sessionManager = new SessionManager(this);
 
-        // ── Back button ───────────────────────────────────────────────────────
         ImageView btnBack = findViewById(R.id.btn_back);
         btnBack.setOnClickListener(v -> finish());
 
-        // ── Fill Profile rows ─────────────────────────────────────────────────
 
 
-        // ── Fill App rows ─────────────────────────────────────────────────────
         setupRow(
                 R.id.row_notifications,
                 "Notifications",
@@ -50,7 +47,6 @@ public class SettingsActivity extends AppCompatActivity {
                 "90 seconds"
         );
 
-        // ── Row click listeners ───────────────────────────────────────────────
 
 
         findViewById(R.id.row_notifications).setOnClickListener(v ->
@@ -65,12 +61,10 @@ public class SettingsActivity extends AppCompatActivity {
                 showInfoDialog("Rest Timer", "Rest timer settings coming soon!")
         );
 
-        // ── Logout ────────────────────────────────────────────────────────────
         Button btnLogout = findViewById(R.id.btn_logout);
         btnLogout.setOnClickListener(v -> showLogoutDialog());
     }
 
-    // ── Helper: fill a settings row ───────────────────────────────────────────
 
     private void setupRow(int rowId, String title, String value) {
         View row = findViewById(rowId);
@@ -83,7 +77,6 @@ public class SettingsActivity extends AppCompatActivity {
         if (tvValue != null) tvValue.setText(value);
     }
 
-    // ── Dialogs ───────────────────────────────────────────────────────────────
 
     private void showInfoDialog(String title, String message) {
         new AlertDialog.Builder(this)

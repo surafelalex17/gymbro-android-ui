@@ -37,4 +37,8 @@ public class User {
     public Double getHeight() { return height; }
     public String getFitnessGoal() { return fitnessGoal; }
     public String getCreatedAt() { return createdAt; }
+
+    public Object getStatus() {
+        return null;
+    }
 }

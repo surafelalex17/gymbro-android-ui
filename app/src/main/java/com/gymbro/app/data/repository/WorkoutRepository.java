@@ -40,7 +40,6 @@ public class WorkoutRepository {
         this.mainHandler = new Handler(Looper.getMainLooper());
     }
 
-    // Load from Room first, refresh from API in background
     public void getWorkouts(WorkoutCallback callback) {
         executor.execute(() -> {
             List<WorkoutEntity> cached = workoutDao.getAll();
@@ -68,7 +67,6 @@ public class WorkoutRepository {
                         if (response.isSuccessful() && response.body() != null) {
                             List<Workout> workouts = response.body().getData();
 
-                            // Cache in Room
                             executor.execute(() -> {
                                 workoutDao.deleteAll();
                                 workoutDao.insertAll(toEntityList(workouts));
@@ -77,7 +75,6 @@ public class WorkoutRepository {
                             if (isFirstLoad) {
                                 mainHandler.post(() -> callback.onSuccess(workouts));
                             } else {
-                                // Refresh UI with latest data
                                 mainHandler.post(() -> callback.onSuccess(workouts));
                             }
                         }
@@ -92,7 +89,6 @@ public class WorkoutRepository {
                 });
     }
 
-    // ── Converters ────────────────────────────────────────────────────────────
 
     private List<Workout> toModelList(List<WorkoutEntity> entities) {
         List<Workout> list = new ArrayList<>();
@@ -129,7 +125,6 @@ public class WorkoutRepository {
                 w.getCompletedAt(), w.getCreatedAt()
         );
     }
-    // Force fresh data from API only — no cache
     public void refreshWorkouts(WorkoutCallback callback) {
         fetchFromApi(callback, true);
     }

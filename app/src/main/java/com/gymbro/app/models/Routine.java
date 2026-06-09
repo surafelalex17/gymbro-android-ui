@@ -25,7 +25,6 @@ public class Routine implements Serializable {
     @SerializedName("createdAt")
     private String createdAt;
 
-    // ← Changed from List<Exercise> to List<RoutineExercise>
     @SerializedName("exercises")
     private List<RoutineExercise> exercises;
 
@@ -37,7 +36,6 @@ public class Routine implements Serializable {
         return exercises != null ? exercises.size() : 0;
     }
 
-    // Getters
     public String getId() { return id; }
     public String getName() { return name; }
     public String getDescription() { return description; }
@@ -46,7 +44,6 @@ public class Routine implements Serializable {
     public String getCreatedAt() { return createdAt; }
     public List<RoutineExercise> getExercises() { return exercises; }
 
-    // Setters
     public void setId(String id) { this.id = id; }
     public void setName(String name) { this.name = name; }
     public void setDescription(String description) { this.description = description; }

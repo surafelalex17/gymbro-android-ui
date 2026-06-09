@@ -3,7 +3,6 @@ package com.gymbro.app.models;
 import java.util.ArrayList;
 import java.util.List;
 
-// Represents an exercise during an active workout session
 public class SessionExercise {
 
     private String exerciseId;
@@ -17,7 +16,7 @@ public class SessionExercise {
         this.exerciseName = exerciseName;
         this.exerciseCategory = exerciseCategory;
         this.sets = new ArrayList<>();
-        // Start with 3 default sets
+
         sets.add(new SessionSet());
         sets.add(new SessionSet());
         sets.add(new SessionSet());

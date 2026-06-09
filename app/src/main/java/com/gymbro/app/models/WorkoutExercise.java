@@ -3,10 +3,7 @@ package com.gymbro.app.models;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Represents an exercise added to an active workout, including its sets.
- * Links an Exercise to its performed sets.
- */
+
 public class WorkoutExercise {
 
     private Exercise exercise;
@@ -20,7 +17,7 @@ public class WorkoutExercise {
     public WorkoutExercise(Exercise exercise) {
         this.exercise = exercise;
         this.sets = new ArrayList<>();
-        // Add a default first set
+
         sets.add(new WorkoutSet(1, 0f, 0));
     }
 
@@ -45,7 +42,6 @@ public class WorkoutExercise {
         return count;
     }
 
-    // --- Getters and Setters ---
 
     public Exercise getExercise() { return exercise; }
     public void setExercise(Exercise exercise) { this.exercise = exercise; }

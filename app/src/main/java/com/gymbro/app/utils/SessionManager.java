@@ -14,22 +14,25 @@ public class SessionManager {
     private final SharedPreferences prefs;
     private final SharedPreferences.Editor editor;
 
+    private static final String KEY_STATUS = "user_status";
+
     public SessionManager(Context context) {
         prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         editor = prefs.edit();
     }
 
-    // Save after login/register
     public void saveSession(String token, String userId,
-                            String email, String firstName) {
+                            String email, String firstName,
+                            Object status) {
+
         editor.putString(KEY_TOKEN, token);
         editor.putString(KEY_USER_ID, userId);
         editor.putString(KEY_USER_EMAIL, email);
         editor.putString(KEY_FIRST_NAME, firstName);
+        editor.putString(KEY_STATUS, (String) status);
         editor.apply();
     }
 
-    // Get token for API calls — always use "Bearer " + getToken()
     public String getToken() {
         return prefs.getString(KEY_TOKEN, null);
     }
@@ -46,19 +49,19 @@ public class SessionManager {
         return prefs.getString(KEY_FIRST_NAME, null);
     }
 
-    // Check if user is logged in
     public boolean isLoggedIn() {
         return getToken() != null && !getToken().isEmpty();
     }
 
 
 
-    // Call on logout
     public void clearSession() {
         editor.clear();
         editor.apply();
     }
 
 
-
+    public String getStatus() {
+        return "";
+    }
 }

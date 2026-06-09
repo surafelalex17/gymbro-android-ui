@@ -53,15 +53,12 @@ public class ExercisePickerActivity extends AppCompatActivity {
 
         btnBack.setOnClickListener(v -> finish());
 
-        // Setup adapter
         adapter = new ExerciseAdapter(exercise -> addExerciseToRoutine(exercise));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        // Load exercises
         loadExercises();
 
-        // Search
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int st, int c, int a) {}
             @Override public void afterTextChanged(Editable s) {}

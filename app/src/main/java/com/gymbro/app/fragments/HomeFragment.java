@@ -138,22 +138,24 @@ public class HomeFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if (workoutRepository != null) {
-            workoutRepository.refreshWorkouts(new WorkoutRepository.WorkoutCallback() {
-                @Override
-                public void onSuccess(List<Workout> workouts) {
-                    if (getActivity() == null) return;
-                    requireActivity().runOnUiThread(() -> {
-                        updateStats(workouts);
-                        updateStreak(workouts);
-                        updateWeeklyGoal(workouts);
+            // Use getWorkouts instead of refreshWorkouts
+            // Room responds instantly, API updates in background
+            workoutRepository.getWorkouts(
+                    new WorkoutRepository.WorkoutCallback() {
+                        @Override
+                        public void onSuccess(List<Workout> workouts) {
+                            if (getActivity() == null) return;
+                            requireActivity().runOnUiThread(() -> {
+                                updateStats(workouts);
+                                updateStreak(workouts);
+                                updateWeeklyGoal(workouts);
+                            });
+                        }
+                        @Override
+                        public void onError(String message) {
+                            showPlaceholders();
+                        }
                     });
-                }
-
-                @Override
-                public void onError(String message) {
-                    showPlaceholders();
-                }
-            });
         }
     }
 

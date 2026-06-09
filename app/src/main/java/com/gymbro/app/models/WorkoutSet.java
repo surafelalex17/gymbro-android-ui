@@ -1,9 +1,6 @@
 package com.gymbro.app.models;
 
-/**
- * Represents a single set within a workout exercise entry.
- * e.g. "Set 1: 80kg x 8 reps"
- */
+
 public class WorkoutSet{
 
     private int setNumber;
@@ -22,7 +19,6 @@ public class WorkoutSet{
         this.isCompleted = false;
     }
 
-    // --- Getters and Setters ---
 
     public int getSetNumber() { return setNumber; }
     public void setSetNumber(int setNumber) { this.setNumber = setNumber; }

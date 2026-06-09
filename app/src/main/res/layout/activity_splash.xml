@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    SPLASH SCREEN LAYOUT
-    File: res/layout/activity_splash.xml
-    Used by: SplashActivity.java
--->
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,7 +7,6 @@
     android:layout_height="match_parent"
     android:background="@color/bg_dark">
 
-    <!-- Background gradient overlay -->
     <View
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -21,7 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- App Logo Icon -->
     <ImageView
         android:id="@+id/splash_logo"
         android:layout_width="96dp"
@@ -36,12 +30,11 @@
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintVertical_bias="0.45" />
 
-    <!-- App Name -->
     <TextView
         android:id="@+id/splash_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="GymBro"
+        android:text="FitFlow"
         android:textColor="@color/text_primary"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -53,7 +46,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Tagline -->
     <TextView
         android:id="@+id/splash_tagline"
         android:layout_width="wrap_content"
@@ -69,7 +61,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Version at bottom -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -16,7 +16,7 @@ public class ExerciseEntity {
     private String id;
     private String name;
     private String category;
-    private String muscleGroups; // stored as comma-separated string
+    private String muscleGroups;
     private String equipment;
     private String description;
 

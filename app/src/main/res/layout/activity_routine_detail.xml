@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/bg_dark">
 
-    <!-- Top Bar -->
     <LinearLayout
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
@@ -55,7 +54,6 @@
 
         </LinearLayout>
 
-        <!-- Add Exercise -->
         <TextView
             android:id="@+id/btn_add_exercise"
             android:layout_width="wrap_content"
@@ -69,7 +67,6 @@
 
     </LinearLayout>
 
-    <!-- Exercise List -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_routine_exercises"
         android:layout_width="match_parent"
@@ -79,7 +76,6 @@
         android:paddingBottom="100dp"
         android:layout_marginTop="130dp" />
 
-    <!-- Empty State -->
     <LinearLayout
         android:id="@+id/empty_exercises"
         android:layout_width="wrap_content"
@@ -114,7 +110,6 @@
 
     </LinearLayout>
 
-    <!-- Start Workout Button -->
     <Button
         android:id="@+id/btn_start_workout"
         android:layout_width="match_parent"

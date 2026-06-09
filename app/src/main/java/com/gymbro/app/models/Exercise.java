@@ -24,14 +24,13 @@ public class Exercise implements Serializable {
     @SerializedName("description")
     private String description;
 
-    // Getters
     public String getId() { return id; }
     public String getName() { return name; }
     public String getCategory() { return category; }
     public List<String> getMuscleGroups() { return muscleGroups; }
     public String getEquipment() { return equipment; }
     public String getDescription() { return description; }
-    // Add these setters to your existing Exercise.java
+
     public void setId(String id) { this.id = id; }
     public void setName(String name) { this.name = name; }
     public void setCategory(String category) { this.category = category; }

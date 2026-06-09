@@ -14,7 +14,8 @@ import java.util.concurrent.TimeUnit;
 
 public class RetrofitClient {
 
-    private static final String BASE_URL = "http://10.0.2.2:3000/api/v1/";
+    private static final String BASE_URL =
+            "https://fitness-backend-vuuf.onrender.com/api/v1/";
 
     private static RetrofitClient instance;
 

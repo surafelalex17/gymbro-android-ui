@@ -12,31 +12,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.gymbro.app.R;
 import com.gymbro.app.utils.SessionManager;
 
-/**
- * SplashActivity
- * File: java/com/gymbro/app/activities/SplashActivity.java
- *
- * Entry point of the app. Shows logo animation then:
- * - If user is logged in → go to MainActivity
- * - If not → go to LoginActivity
- *
- * BACKEND INTEGRATION: Replace SessionManager with real auth token check.
- */
+
 public class SplashActivity extends AppCompatActivity {
 
-    private static final int SPLASH_DURATION_MS = 1800;
+    private static final int SPLASH_DURATION_MS = 500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        // Animate logo and title in
         ImageView logo = findViewById(R.id.splash_logo);
         TextView title = findViewById(R.id.splash_title);
         TextView tagline = findViewById(R.id.splash_tagline);
 
-        // Staggered fade-in animation
         logo.animate().alpha(1f).translationY(0).setDuration(500)
                 .setStartDelay(100).setInterpolator(new AccelerateDecelerateInterpolator()).start();
         title.animate().alpha(1f).setDuration(500)
@@ -44,13 +33,16 @@ public class SplashActivity extends AppCompatActivity {
         tagline.animate().alpha(1f).setDuration(500)
                 .setStartDelay(550).start();
 
-        // Navigate after delay
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             SessionManager session = new SessionManager(this);
             Intent intent;
-            if (session.isLoggedIn()) {
+            if (session.isLoggedIn() &&
+                    "ACTIVE".equals(session.getStatus())) {
+
                 intent = new Intent(this, MainActivity.class);
+
             } else {
+                session.clearSession();
                 intent = new Intent(this, LoginActivity.class);
             }
             startActivity(intent);

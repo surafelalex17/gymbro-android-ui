@@ -29,11 +29,9 @@ public class RoutineExercise implements Serializable {
     @SerializedName("notes")
     private String notes;
 
-    // Nested exercise object
     @SerializedName("exercise")
     private Exercise exercise;
 
-    // Getters
     public String getId() { return id; }
     public String getRoutineId() { return routineId; }
     public String getExerciseId() { return exerciseId; }
@@ -44,7 +42,6 @@ public class RoutineExercise implements Serializable {
     public String getNotes() { return notes; }
     public Exercise getExercise() { return exercise; }
 
-    // Setters
     public void setId(String id) { this.id = id; }
     public void setRoutineId(String routineId) { this.routineId = routineId; }
     public void setExerciseId(String exerciseId) { this.exerciseId = exerciseId; }
